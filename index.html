@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<!--
+  Project: Personal Portfolio Website
+  Purpose: A brief, responsive portfolio to showcase skills, experience, and projects,
+           with simple navigation, an image carousel, an about section, a project gallery,
+           and a contact form with social links.
+  Tech: Semantic HTML, modern CSS (responsive/layout), tiny vanilla JS for mobile menu,
+        Font Awesome for icons. Designed for accessibility and mobile-first use.
+-->
+<html lang="en">
+
+<head>
+    <!-- Metadata, page title, and stylesheets -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Site Header: logo + primary navigation (collapsible on mobile) -->
+    <header>
+        <nav>
+            <div class="logo">
+                <i class="fas fa-code"></i>
+                <span>My Portfolio</span>
+            </div>
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav"
+                aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul id="primary-nav">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">My Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero/Home section with auto-rotating image carousel and intro text -->
+        <section id="home">
+            <div class="carousel" aria-label="Featured images">
+                <div class="slides">
+                    <div class="slide"><img src="images/c1.jpg" alt="Featured project image 1"></div>
+                    <div class="slide"><img src="images/c2.jpg" alt="Featured project image 2"></div>
+                    <div class="slide"><img src="images/c3.jpg" alt="Featured project image 3"></div>
+                    <div class="slide"><img src="images/c4.jpg" alt="Featured project image 4"></div>
+                </div>
+            </div>
+            <h1>Welcome to My Portfolio</h1>
+            <p>I am a web developer with a passion for creating beautiful and responsive websites.</p>
+        </section>
+
+        <!-- About section: short bio + photo -->
+        <section id="about">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Front-end Developer</h3>
+                    <p>I'm a front-end developer with 6 months of experience. I build simple, clean, and responsive
+                        websites using HTML, CSS, and JavaScript. I also work with jQuery, Bootstrap, and Tailwind CSS
+                        to speed up UI development, and I'm learning React to create interactive components.</p>
+                    <p>My focus is on clear layouts, good accessibility, and smooth user experiences that work well on
+                        phones and desktops.</p>
+                </div>
+                <div class="about-photo">
+                    <img src="images/myphoto.png" alt="Pic of me">
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio section: responsive project cards grid -->
+        <section id="projects">
+            <h2>My Projects</h2>
+            <div class="project-gallery">
+                <div class="project">
+                    <img src="images/project-1.png" alt="Project 1">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
+                </div>
+                <div class="project">
+                    <img src="images/project-3.png" alt="Project 2">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
+                </div>
+                <div class="project">
+                    <img src="images/project-4.png" alt="Project 3">
+                    <p>Lorem ipsum dolr sit amet consectetur adipisicing elit. Quisquam, quos.</p>
+                </div>
+                <div class="project">
+                    <img src="images/project-5.png" alt="Project 4">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
+                </div>
+                <div class="project">
+                    <img src="images/project-6.png" alt="Project 5">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
+                </div>
+                <!-- Add more projects as necessary -->
+            </div>
+        </section>
+    </main>
+
+
+    <!-- Footer: contact form + copyright + social links -->
+    <footer>
+        <form id="contact" action="" method="post">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Your Email</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Your Message</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+
+            <button type="submit">Submit</button>
+        </form>
+        <div class="footer-left">
+            <p>&copy; 2025 My Portfolio. All rights reserved.</p>
+            <div class="socials">
+                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i
+                        class="fab fa-facebook"></i></a>
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i
+                        class="fab fa-linkedin"></i></a>
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i
+                        class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <!-- Small script: toggles the mobile navigation menu (hamburger) -->
+    <script>
+        (function () {
+            var nav = document.querySelector('header nav');
+            var btn = document.querySelector('.menu-toggle');
+            if (!nav || !btn) return;
+            btn.addEventListener('click', function () {
+                var isOpen = nav.classList.toggle('open');
+                btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            });
+        })();
+    </script>
+</body>
+
+</html>

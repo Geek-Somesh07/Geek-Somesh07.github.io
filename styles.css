@@ -1,0 +1,382 @@
+/*
+  Stylesheet: Portfolio Website
+  Purpose: Provide clean, responsive styling for the header/nav, hero carousel,
+           about section, project gallery, and footer with a simple contact form.
+  Notes: Mobile-first responsive rules with media queries, accessible color contrasts,
+         and subtle animations for interactivity.
+*/
+
+/* Global defaults and page baseline */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #000000;
+    margin: 0;
+    padding: 0;
+}
+/* Branding: logo icon + text inside header */
+.logo{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+.logo i{
+    font-size: 1rem;
+    color: #fff;
+    margin-right: 10px;
+}
+.logo span{
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+}
+/* Header and primary navigation */
+header {
+    background-color: #000000;
+    padding: 10px;
+    color: #fff;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Horizontal nav list (becomes vertical on mobile) */
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+/* Hamburger button for small screens */
+.menu-toggle {
+    display: none;
+    background: transparent;
+    border: 0;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: #fff;
+    margin: 5px 0;
+}
+
+/* Mobile nav behavior: hide menu until toggled open */
+@media screen and (max-width: 768px) {
+    .menu-toggle { display: inline-block; }
+    nav ul#primary-nav {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        gap: 8px;
+        margin-top: 10px;
+    }
+    nav.open ul#primary-nav { display: flex; }
+    nav { flex-wrap: wrap; }
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+nav ul li a:hover {
+    color: #47f6ff;
+}
+/* Card-like section containers */
+section {
+    padding: 50px;
+    margin: 20px 0;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Simple CSS-only carousel: auto-advances via keyframes */
+.carousel {
+    width: 90vw; /* occupy 90% of the screen width */
+    margin: 0 auto 20px auto; /* center horizontally */
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+    aspect-ratio: 16 / 5; /* responsive height */
+}
+
+.carousel .slides {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    animation: slideShow 15s infinite;
+}
+
+.carousel .slide {
+    width: 100%;
+    height: 100%;
+    flex: 1 0 100%;
+}
+
+.carousel img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Keyframes timing controls slide transitions */
+@keyframes slideShow {
+    0% { transform: translateX(0%); }
+    28% { transform: translateX(0%); }
+    33% { transform: translateX(-100%); }
+    61% { transform: translateX(-100%); }
+    66% { transform: translateX(-200%); }
+    95% { transform: translateX(-200%); }
+    100% { transform: translateX(0%); }
+}
+
+/* Responsive aspect ratios for carousel across breakpoints */
+@media screen and (max-width: 1024px) {
+    .carousel { aspect-ratio: 3 / 2; }
+}
+
+@media screen and (max-width: 768px) {
+    .carousel { aspect-ratio: 4 / 3; }
+}
+
+@media screen and (max-width: 480px) {
+    .carousel { aspect-ratio: 1 / 1; }
+}
+
+h1,h2 {
+    color: #000000;
+}
+
+#home p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #000000;
+}
+/* Footer text overrides */
+footer p {
+     font-size: 1rem;
+     line-height: 1.6;
+     color: #fff;
+ }
+/* Footer container and alignment */
+footer {
+    background-color: #000000;
+    color: #fff;
+    padding: 20px;
+    /* layout: form on top center, text and icons below */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+footer a {
+    color: #fff;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: #47fff6;
+}
+
+/* Footer layout helpers */
+footer > div,
+.footer-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.footer-left .socials {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+footer form {
+    margin: 0;
+    max-width: 480px;
+    width: 100%;
+}
+
+/* Project gallery grid */
+.project-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    align-items: stretch;
+}
+
+.project {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    flex: 0 1 calc(33.333% - 24px);
+    max-width: calc(33.333% - 24px);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.project img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.35s ease;
+}
+
+.project p {
+    margin: 0;
+    padding: 12px 16px;
+    color: #333; /* override global paragraph color for readability */
+}
+
+.project:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.project:hover img {
+    transform: scale(1.05);
+}
+
+/* About section: two-column layout that stacks on mobile */
+.about-content {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.about-text {
+    flex: 1 1 55%;
+}
+
+.about-photo {
+    flex: 1 1 45%;
+    display: flex;
+    justify-content: center;
+}
+
+.about-photo img {
+    width: 100%;
+    max-width: 260px;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+    display: block;
+}
+
+/* Mobile breakpoint adjustments */
+@media screen and (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    section {
+        padding: 30px;
+    }
+
+    .project-gallery {
+        gap: 16px;
+    }
+
+    .project {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+
+    .about-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    footer form {
+        margin: 0;
+    }
+}
+
+/* Tablet breakpoint adjustments */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .project {
+        flex: 0 1 calc(50% - 24px);
+        max-width: calc(50% - 24px);
+    }
+}
+/* Contact form styling */
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+label {
+    font-size: 1rem;
+    margin-bottom: 5px;
+    color: #000000;
+}
+
+input,
+textarea {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    border-radius: 4px;
+}
+
+button:hover {
+    background-color: #47e6ff;
+}
+
+/* Links to Social Media icons */
+a i {
+    font-size: 2rem;
+    color: #ffffff;
+    margin: 0 15px;
+}
+
+a i:hover {
+    color: #47daff;
+}
+

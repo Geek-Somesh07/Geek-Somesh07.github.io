@@ -1,0 +1,17 @@
+Project Summary
+
+What the project is about:
+This is a simple, responsive personal portfolio website. It has a header with navigation, a hero section with an image carousel, an About section, a Projects gallery, and a Contact form with social links. The goal is to show skills and work clearly on phones, tablets, and desktops.
+
+What I learned:
+- How to use semantic HTML for clear structure and accessibility.
+- How to make a mobile-friendly menu with a small JavaScript toggle.
+- How to build a lightweight CSS-only carousel using keyframes and flexbox.
+- How to write media queries so layouts adapt across screen sizes.
+- How to organize assets (moved images into an images/ folder) and write helpful alt text.
+
+Challenges I overcame:
+- Making the navigation work well on small screens (hamburger toggle and ARIA attributes).
+- Getting carousel images to scale without stretching, using object-fit and aspect-ratio.
+- Keeping project cards readable and consistent at different breakpoints with flexbox and hover effects.
+- Updating links and section IDs (Portfolio → Projects) and keeping anchor links consistent.
